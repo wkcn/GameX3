@@ -23,8 +23,14 @@ class Surface:
     def load(filename):
         raise NotImplementedError('Surface.load_image is not implemented')
 
-    def blit(self, surface, pos):
-        raise NotImplementedError('Surface.blit is not implemented')
+    def draw(self, surface, pos):
+        raise NotImplementedError('Surface.draw is not implemented')
 
     def size(self):
         raise NotImplementedError('Surface.size is not implemented')
+
+    def resize(self, size, smooth=False):
+        raise NotImplementedError('Surface.resize is not implemented')
+
+    def fill(self, color):
+        raise NotImplementedError('Surface.fill is not implemented')

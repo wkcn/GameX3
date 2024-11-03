@@ -37,8 +37,19 @@ class Surface(SurfaceBase):
         data = pygame.image.load(filename).convert_alpha()
         return Surface(data)
 
-    def blit(self, surface, pos):
+    def draw(self, surface, pos):
         self.data.blit(surface.data, pos)
 
     def size(self):
         return self.data.get_size()
+
+    def resize(self, size, smooth=False):
+        if smooth:
+            fn = pygame.transform.smoothscale
+        else:
+            fn = pygame.transform.scale
+        size = (int(size[0]), int(size[1]))
+        return Surface(fn(self.data, size).convert_alpha())
+
+    def fill(self, color):
+        self.data.fill(color)
