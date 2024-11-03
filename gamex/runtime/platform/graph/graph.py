@@ -14,7 +14,7 @@ class Surface:
         raise NotImplementedError('Surface.__init__ is not implemented')
 
     @staticmethod
-    def load(filename) -> Surface:
+    def load(filename):
         raise NotImplementedError('Surface.load_image is not implemented')
 
     def blit(self, surface, pos):

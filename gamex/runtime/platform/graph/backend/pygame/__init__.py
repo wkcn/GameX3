@@ -22,7 +22,7 @@ class Surface(SurfaceBase):
         self.img = img
 
     @staticmethod
-    def load(filename) -> Surface:
+    def load(filename):
         img = pygame.image.load(filename).convert_alpha()
         return Surface(img)
 

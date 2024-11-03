@@ -1,2 +1,1 @@
-def create_window(title, size):
-    pass
+from .runtime.core.window import create_window
