@@ -16,6 +16,9 @@ class Window(WindowBase):
     def get_surface(self):
         return self.screen
 
+    def tick(self, delta_time):
+        pygame.event.get()
+
 
 class Surface(SurfaceBase):
     def __init__(self, img):

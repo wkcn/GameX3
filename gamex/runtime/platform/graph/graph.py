@@ -1,5 +1,5 @@
 class Window:
-    def __init__(self):
+    def __init__(self, title, size):
         raise NotImplementedError('Window.__init__ is not implemented')
 
     def set_title(self, title):
@@ -7,6 +7,12 @@ class Window:
 
     def get_surface(self):
         raise NotImplementedError('Window.get_surface is not implemented')
+
+    def running(self) -> bool:
+        return True
+
+    def tick(self, delta_time):
+        pass
 
 
 class Surface:
