@@ -1,4 +1,5 @@
 import pygame
+from pygame.locals import *
 from ...graph import Window as WindowBase, Surface as SurfaceBase
 
 
@@ -9,6 +10,7 @@ class Window(WindowBase):
 
         flags = 0
         self.screen = pygame.display.set_mode(size, flags)
+        self._running = True
 
     def set_title(self, title):
         pygame.display.set_caption(title)
@@ -16,8 +18,13 @@ class Window(WindowBase):
     def get_surface(self):
         return Surface(self.screen)
 
+    def running(self) -> bool:
+        return self._running
+
     def tick(self, delta_time):
-        pygame.event.get()
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                self._running = False
         pygame.display.update()
 
 
