@@ -25,3 +25,6 @@ class Surface:
 
     def blit(self, surface, pos):
         raise NotImplementedError('Surface.blit is not implemented')
+
+    def size(self):
+        raise NotImplementedError('Surface.size is not implemented')

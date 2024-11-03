@@ -14,20 +14,24 @@ class Window(WindowBase):
         pygame.display.set_caption(title)
 
     def get_surface(self):
-        return self.screen
+        return Surface(self.screen)
 
     def tick(self, delta_time):
         pygame.event.get()
+        pygame.display.update()
 
 
 class Surface(SurfaceBase):
-    def __init__(self, img):
-        self.img = img
+    def __init__(self, data):
+        self.data = data
 
     @staticmethod
     def load(filename):
-        img = pygame.image.load(filename).convert_alpha()
-        return Surface(img)
+        data = pygame.image.load(filename).convert_alpha()
+        return Surface(data)
 
     def blit(self, surface, pos):
-        surface.blit(self.img, pos)
+        self.data.blit(surface.data, pos)
+
+    def size(self):
+        return self.data.get_size()
