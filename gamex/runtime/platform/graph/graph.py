@@ -26,6 +26,10 @@ class Surface:
     def load(filename):
         raise NotImplementedError('Surface.load_image is not implemented')
 
+    @staticmethod
+    def new(size):
+        raise NotImplementedError('Surface.new is not implemented')
+
     def draw(self, surface, pos):
         raise NotImplementedError('Surface.draw is not implemented')
 

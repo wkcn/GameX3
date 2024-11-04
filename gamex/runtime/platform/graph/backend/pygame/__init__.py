@@ -38,6 +38,11 @@ class Surface(SurfaceBase):
         surface = pygame.image.load(filename).convert_alpha()
         return Surface(surface)
 
+    @staticmethod
+    def new(size):
+        surface = pygame.surface.Surface(size)
+        return Surface(surface)
+
     def draw(self, surface, pos):
         self.surface.blit(surface.surface, pos)
 
