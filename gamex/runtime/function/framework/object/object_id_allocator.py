@@ -6,4 +6,3 @@ class ObjectID:
         id = ObjectID.ACCUM_ID
         ObjectID.ACCUM_ID += 1
         return id
-
