@@ -1,7 +1,6 @@
-#!/usr/bin/env python
-
 from setuptools import find_packages, setup
-from gamex.version import __version__
+
+exec(open('./gamex/version.py').read())
 
 setup(
     name="GameX3",
