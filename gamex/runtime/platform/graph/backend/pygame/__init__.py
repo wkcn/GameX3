@@ -1,3 +1,4 @@
+import numpy as np
 import pygame
 from pygame.locals import *
 from ...graph import Window as WindowBase, Surface as SurfaceBase
@@ -29,19 +30,19 @@ class Window(WindowBase):
 
 
 class Surface(SurfaceBase):
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, surface):
+        self.surface = surface
 
     @staticmethod
     def load(filename):
-        data = pygame.image.load(filename).convert_alpha()
-        return Surface(data)
+        surface = pygame.image.load(filename).convert_alpha()
+        return Surface(surface)
 
     def draw(self, surface, pos):
-        self.data.blit(surface.data, pos)
+        self.surface.blit(surface.surface, pos)
 
     def size(self):
-        return self.data.get_size()
+        return self.surface.get_size()
 
     def resize(self, size, smooth=False):
         if smooth:
@@ -49,7 +50,11 @@ class Surface(SurfaceBase):
         else:
             fn = pygame.transform.scale
         size = (int(size[0]), int(size[1]))
-        return Surface(fn(self.data, size).convert_alpha())
+        return Surface(fn(self.surface, size).convert_alpha())
 
     def fill(self, color):
-        self.data.fill(color)
+        self.surface.fill(color)
+
+    def data(self) -> np.ndarray:
+        data = pygame.surfarray.pixels3d(self.surface)
+        return np.swapaxes(data, 0, 1)

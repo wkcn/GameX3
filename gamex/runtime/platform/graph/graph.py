@@ -1,3 +1,6 @@
+import numpy as np
+
+
 class Window:
     def __init__(self, title, size):
         raise NotImplementedError('Window.__init__ is not implemented')
@@ -12,11 +15,11 @@ class Window:
         return True
 
     def tick(self, delta_time):
-        pass
+        raise NotImplementedError('Window.tick is not implemented')
 
 
 class Surface:
-    def __init__(self):
+    def __init__(self, surface):
         raise NotImplementedError('Surface.__init__ is not implemented')
 
     @staticmethod
@@ -34,3 +37,6 @@ class Surface:
 
     def fill(self, color):
         raise NotImplementedError('Surface.fill is not implemented')
+
+    def data(self) -> np.ndarray:
+        raise NotImplementedError('Surface.data is not implemented')
